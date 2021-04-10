@@ -1,0 +1,135 @@
+/* Box Model Hack */
+* {
+  box-sizing: border-box;
+  font-family: 'Roboto Mono', monospace;
+}
+
+/* Clear fix hack */
+.clearfix:after {
+     content: ".";
+     display: block;
+     clear: both;
+     visibility: hidden;
+     line-height: 0;
+     height: 0;
+}
+
+.clear {
+	clear: both;
+}
+
+/******************************************
+/* BASE STYLES
+/*******************************************/
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 2rem;
+  text-align: center;
+}
+
+h1, h2, h3, h4, h5, h6, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+ul, li {
+  list-style: none;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  color: gray;
+}
+
+/******************************************
+/* LAYOUT
+/*******************************************/
+header {
+  margin: 2rem 0;
+}
+
+.mainSpace {
+  display: flex;
+  justify-content: center;
+}
+
+.calculatorSection {
+  align-items: center;
+  background: black;
+  border-radius: 10px;
+  box-shadow: 1px 1px 2px rgb(55, 55, 55);
+  display: flex;
+  margin-bottom: 2rem;
+  max-width: 450px;
+  min-width: 450px;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  flex: 2;
+}
+
+.calculatorInput {
+  font-size: 4rem;
+  margin: 4rem 0;
+  text-align: right;
+  width: 75%;
+}
+
+.calculatorButtons {
+  font-size: 4rem;
+  margin: 2rem 0 4rem 0;
+  width: 100%;
+}
+
+.calculatorButtons button {
+  border-radius: 50%;
+  height: 70px;
+  width: 70px;
+  margin: 1%;
+  padding: 0.5%;
+  text-align: center;
+}
+
+.calculatorButtons button#clear,
+.calculatorButtons button#copy {
+  border-radius: 20px;
+  height: 70px;
+  margin-top: 3%;
+  padding: 0;
+  width: 150px;
+}
+
+.spaceLeft,
+.spaceRight {
+  flex: 2;
+}
+
+.calButton {
+  transition: all .07s ease;
+}
+
+.clicking {
+  transform: scale(0.9);
+  background: rgb(198, 198, 198)
+}
+
+.footerSection ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.footerSection li {
+  margin: 0 2rem;
+}
+
+/******************************************
+/* ADDITIONAL STYLES
+/*******************************************/
