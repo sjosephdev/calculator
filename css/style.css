@@ -140,6 +140,7 @@ header {
     margin: -7rem 0;
   }
   .calculatorSection {
+    margin: 0 2rem;
     transform: scale(0.7);
   }
 
