@@ -137,9 +137,9 @@ header {
 
 @media screen and (max-width: 900px) {
 
-  .mainSpace {
+  /* .mainSpace {
     margin: -7rem 0;
-  }
+  } */
 
   .calculatorSection {
     transform: scale(0.9);
