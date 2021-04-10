@@ -2,4 +2,4 @@
 Simple JavaScript Calculator
 
 
-https://calculator.sjoseph.dev
+https://sjoseph-calculator.sjoseph.dev
