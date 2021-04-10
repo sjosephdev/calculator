@@ -118,7 +118,8 @@ header {
 .clicking {
   transform: scale(0.9);
   -webkit-transform: scale(0.9);
-  background: rgb(198, 198, 198)
+  background: rgb(198, 198, 198);
+  -webkit-background: rgb(198, 198, 198);
 }
 
 .footerSection ul {
@@ -141,8 +142,8 @@ header {
   }
 
   .calculatorSection {
-    transform: scale(0.7);
-    -webkit-transform: scale(0.7);
+    transform: scale(0.9);
+    -webkit-transform: scale(0.9);
   }
 
   .spaceLeft,
