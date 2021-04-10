@@ -112,10 +112,12 @@ header {
 
 .calButton {
   transition: all .07s ease;
+  -webkit-transition: all .07s ease;
 }
 
 .clicking {
   transform: scale(0.9);
+  -webkit-transform: scale(0.9);
   background: rgb(198, 198, 198)
 }
 
@@ -130,6 +132,23 @@ header {
   margin: 0 2rem;
 }
 
+/* Media Queries */
+
+@media screen and (max-width: 375px) {
+
+  .mainSpace {
+    margin: -7rem 0;
+  }
+  .calculatorSection {
+    transform: scale(0.7);
+  }
+
+  .spaceLeft,
+  .spaceRight {
+    display: none;
+  }
+
+}
 /******************************************
 /* ADDITIONAL STYLES
 /*******************************************/
