@@ -26,6 +26,7 @@ html {
 }
 
 body {
+  background: linear-gradient(rgb(153, 153, 255), rgb(158, 158, 162));
   font-size: 2rem;
   text-align: center;
 }
@@ -138,11 +139,12 @@ header {
 
 @media screen and (max-width: 900px) {
 
-  /* .mainSpace {
-    margin: -7rem 0;
-  } */
+  header {
+    margin-top: 1.5rem;
+  }
 
   .calculatorSection {
+    margin-bottom: 1rem;
     transform: scale(0.9);
     -webkit-transform: scale(0.9);
   }
