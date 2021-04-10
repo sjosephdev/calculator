@@ -142,6 +142,7 @@ header {
   .calculatorSection {
     margin: 0 2rem;
     transform: scale(0.7);
+    -webkit-transform: scale(0.7);
   }
 
   .spaceLeft,
