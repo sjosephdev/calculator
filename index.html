@@ -22,39 +22,45 @@
 			<section class="spaceLeft">
 			</section>
 			<section class="calculatorSection">
-				<section class="calculatorForm">
-					<form class="calculatorForm" action="index.html" method="post">
-						<input class="calculatorInput" id='input' type="text" name="" value="0">
-					</form>
+				<section class="calculatorScreen">
+					<section class="calculatorTop">
+					<h4 id="equation"></h4>
+					</section>
+					<section class="calculatorForm">
+						<form class="calculatorForm" action="index.html" method="post">
+							<input class="calculatorInput" id='input' type="text" name="" value="0">
+						</form>
+					</section>
 				</section>
 				<section class="calculatorButtons">
+					<div class="rowClear">
+						<button class="button calButton" id="clear" value="0">C</button>
+						<button class="button calButton" id="delete" value="0">DEL</button>
+						<button class="button calButton" id="copy" value="0">COPY</button>
+						<button data-key="111" class="button calButton" id="divide" value="/">/</button>
+					</div>
 					<div class="row0">
 						<button data-key="103" class="numButton calButton" id="seven" value="7">7</button>
 						<button data-key="104" class="numButton calButton" id="eight" value="8">8</button>
 						<button data-key="105" class="numButton calButton" id="nine" value="9">9</button>
-						<button data-key="111" class="button calButton" id="divide" value="/">/</button>
+						<button data-key="106" class="button calButton" id="multiply" value="*">X</button>
 					</div>
 					<div class="row1">
 						<button data-key="100" class="numButton calButton" id="four" value="4">4</button>
 						<button data-key="101" class="numButton calButton" id="five" value="5">5</button>
 						<button data-key="102" class="numButton calButton" id="six" value="6">6</button>
-						<button data-key="106" class="button calButton" id="multiply" value="*">X</button>
+						<button data-key="107" class="button calButton" id="add" value="+">+</button>
 					</div>
 					<div class="row2">
 						<button data-key="97" class="numButton calButton" id="one" value="1">1</button>
 						<button data-key="98" class="numButton calButton" id="two" value="2">2</button>
 						<button data-key="99" class="numButton calButton" id="three" value="3">3</button>
-						<button data-key="107" class="button calButton" id="add" value="+">+</button>
+						<button data-key="109" class="button calButton" id="subtract" value="-">-</button>
 					</div>
 					<div class="row3">
 						<button data-key="96" class="numButton calButton" id="zero" value="0">0</button>
 						<button data-key="110" class="numButton calButton" id="decimal" value=".">.</button>
 						<button data-key="13" class="button calButton" id="equals" value="=">=</button>
-						<button data-key="109" class="button calButton" id="subtract" value="-">-</button>
-					</div>
-					<div class="rowClear">
-						<button class="button calButton" id="clear" value="0">CLEAR</button>
-						<button class="button calButton" id="copy" value="0">COPY</button>
 					</div>
 				</section>
 

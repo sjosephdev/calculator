@@ -26,7 +26,7 @@ html {
 }
 
 body {
-  background: linear-gradient(rgba(205, 255, 255, 0.5), rgba(158, 158, 162, 0.5));
+  background: skyblue;
   font-size: 2rem;
   text-align: center;
 }
@@ -34,6 +34,10 @@ body {
 h1, h2, h3, h4, h5, h6, ul, li {
   margin: 0;
   padding: 0;
+}
+
+form {
+  box-shadow: none;
 }
 
 ul, li {
@@ -61,50 +65,70 @@ header {
   justify-content: center;
 }
 
+.calculatorTop {
+  height: 2rem;
+  text-align: right;
+}
+
+.calculatorTop h4 {
+  color: darkgray;
+}
+
 .calculatorSection {
   align-items: center;
-  background: black;
-  border-radius: 10px;
+  background: rgb(80, 80, 80);
+  /* border-radius: 5px; */
   box-shadow: 1px 1px 2px rgb(55, 55, 55);
   display: flex;
   margin-bottom: 2rem;
   max-width: 450px;
   min-width: 450px;
+  padding: 0.2%;
   flex-direction: column;
   flex-wrap: nowrap;
   flex: 2;
 }
 
 .calculatorInput {
+  background: rgb(80, 80, 80);
+  border: none;
+  box-shadow: none;
+  color: white;
   font-size: 4rem;
-  margin: 4rem 0;
+  height: 8rem;
   text-align: right;
-  width: 75%;
+  width: 100%;
+}
+
+.calculatorInput:hover {
+  border: none;
+  box-shadow: none;
+  transform: none;
 }
 
 .calculatorButtons {
-  font-size: 4rem;
-  margin: 2rem 0 4rem 0;
+  display: block;
+  font-size: 0;
+  /* font-size: 4rem; */
+  /* margin: 2rem 0 4rem 0; */
   width: 100%;
 }
 
 .calculatorButtons button {
-  background: white;
-  border-radius: 50%;
-  height: 70px;
-  width: 70px;
-  margin: 1%;
-  padding: 0.5%;
+  /* border-radius: 50%; */
+  /* height: 70px; */
+  background: rgb(122, 122, 122);
+  border: 1px solid rgb(80, 80, 80);
+  color: white;
+  font-size: 2rem;
+  width: 25%;
+  padding: 2rem;
+  /* width: 25%; */
   text-align: center;
 }
 
-.calculatorButtons button#clear,
-.calculatorButtons button#copy {
-  border-radius: 20px;
-  height: 70px;
-  margin-top: 3%;
-  padding: 0;
-  width: 150px;
+#equals {
+  width: 50%;
 }
 
 .spaceLeft,
@@ -114,14 +138,11 @@ header {
 
 .calButton {
   transition: all .07s ease;
-  -webkit-transition: all .07s ease;
 }
 
 .clicking {
   transform: scale(0.9);
-  -webkit-transform: scale(0.9);
-  background: rgb(198, 198, 198);
-  -webkit-background: rgb(198, 198, 198);
+  background: rgb(198, 198, 198)
 }
 
 .footerSection ul {
@@ -135,26 +156,6 @@ header {
   margin: 0 2rem;
 }
 
-/* Media Queries */
-
-@media screen and (max-width: 900px) {
-
-  header {
-    margin-top: 1.5rem;
-  }
-
-  .calculatorSection {
-    margin-bottom: 1rem;
-    transform: scale(0.9);
-    -webkit-transform: scale(0.9);
-  }
-
-  .spaceLeft,
-  .spaceRight {
-    display: none;
-  }
-
-}
 /******************************************
 /* ADDITIONAL STYLES
 /*******************************************/

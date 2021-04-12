@@ -10,7 +10,9 @@
   const btnMultiply = document.querySelector('#multiply');
   const btnDivide = document.querySelector('#divide');
   const btnClear = document.querySelector('#clear');
+  const btnDel = document.querySelector('#delete');
   const btnCopy = document.querySelector('#copy');
+  const runningEquation = document.querySelector('#equation');
   const input = document.querySelector('input');
   const calButton = Array.from(document.querySelectorAll('.calButton'));
 
@@ -19,8 +21,8 @@ const cal = {
 
   operand1: '',
   operand2: '',
-  accumulator: null,
   currentOperator: '',
+  accEquation: '',
   op1HeldValue: false,
 
 
@@ -30,9 +32,12 @@ const cal = {
     if (cal.op1HeldValue) {
       cal.operand2 += event.target.value
       input.value = cal.operand2
+      runningEquation.innerHTML += cal.operand2
+      cal.evaluate();
     } else {
       cal.operand1 += event.target.value
       input.value = cal.operand1
+      runningEquation.innerHTML += cal.operand1
     }
   },
 
@@ -48,13 +53,26 @@ const cal = {
     }
   },
 
+  clickDelete: function() {
+    event.target.classList.add('clicking');
+    if (cal.op1HeldValue) {
+      cal.operand2 = cal.operand2.slice(0, -1)
+      runningEquation.innerHTML = cal.operand2.slice(0, -1)
+      input.value = cal.operand2
+    } else {
+      cal.operand1 = cal.operand1.slice(0, -1)
+      runningEquation.innerHTML = cal.operand1.slice(0, -1)
+      input.value = cal.operand1
+    }
+  },
+
   clickClear: function() {
     event.target.classList.add('clicking');
     cal.operand1 = '';
     cal.operand2 = '';
-    cal.accumulator = null;
     cal.currentOperator = '';
     cal.op1HeldValue = false;
+    runningEquation.innerHTML = '';
     input.value = 0;
   },
 
@@ -96,6 +114,7 @@ const cal = {
   add: function() {
     event.target.classList.add('clicking');
     cal.currentOperator = 'add';
+    runningEquation.innerHTML = `${runningEquation.innerHTML} + `
     if (cal.op1HeldValue) {
       cal.evaluate()
     } else {
@@ -107,6 +126,7 @@ const cal = {
   subtract: function() {
     event.target.classList.add('clicking');
     cal.currentOperator = 'subtract';
+    runningEquation.innerHTML = `${runningEquation.innerHTML} - `
     if (cal.op1HeldValue) {
       cal.evaluate()
     } else {
@@ -118,6 +138,7 @@ const cal = {
   multiply: function() {
     event.target.classList.add('clicking');
     cal.currentOperator = 'multiply';
+    runningEquation.innerHTML = `${runningEquation.innerHTML} x `
     if (cal.op1HeldValue) {
       cal.evaluate()
     } else {
@@ -129,6 +150,7 @@ const cal = {
   divide: function() {
     event.target.classList.add('clicking');
     cal.currentOperator = 'divide';
+    runningEquation.innerHTML = `${runningEquation.innerHTML} / `
     if (cal.op1HeldValue) {
       cal.evaluate()
     } else {
@@ -155,6 +177,8 @@ const cal = {
   btnEquals.addEventListener('click', cal.evaluate);
     //clears input and stored data when user clicks on clear button:
   btnClear.addEventListener('click', cal.clickClear);
+    //deletes last number
+  btnDel.addEventListener('click', cal.clickDelete);
     //copys input:
   btnCopy.addEventListener('click', cal.clickCopy);
     //adds values:
