@@ -156,6 +156,23 @@ header {
   margin: 0 2rem;
 }
 
-/******************************************
-/* ADDITIONAL STYLES
-/*******************************************/
+/* Media Queries */
+
+@media screen and (max-width: 900px) {
+
+  header {
+    margin-top: 1.5rem;
+  }
+
+  .calculatorSection {
+    margin-bottom: 1rem;
+    transform: scale(0.9);
+    -webkit-transform: scale(0.9);
+  }
+
+  .spaceLeft,
+  .spaceRight {
+    display: none;
+  }
+
+}
