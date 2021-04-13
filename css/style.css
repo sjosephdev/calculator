@@ -26,7 +26,7 @@ html {
 }
 
 body {
-  background: skyblue;
+  background: rgb(209, 212, 219);
   font-size: 2rem;
   text-align: center;
 }
@@ -125,6 +125,10 @@ header {
   padding: 2rem;
   /* width: 25%; */
   text-align: center;
+}
+
+.calculatorButtons button.button {
+  background: rgb(130, 136, 154);
 }
 
 #equals {

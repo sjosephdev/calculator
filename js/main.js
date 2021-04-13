@@ -33,11 +33,11 @@ const cal = {
       cal.operand2 += event.target.value
       input.value = cal.operand2
       runningEquation.innerHTML += cal.operand2
-      cal.evaluate();
+      // cal.evaluate();
     } else {
       cal.operand1 += event.target.value
       input.value = cal.operand1
-      runningEquation.innerHTML += cal.operand1
+      runningEquation.innerHTML = cal.operand1
     }
   },
 
@@ -57,11 +57,11 @@ const cal = {
     event.target.classList.add('clicking');
     if (cal.op1HeldValue) {
       cal.operand2 = cal.operand2.slice(0, -1)
-      runningEquation.innerHTML = cal.operand2.slice(0, -1)
+      runningEquation.innerHTML = cal.operand2
       input.value = cal.operand2
     } else {
       cal.operand1 = cal.operand1.slice(0, -1)
-      runningEquation.innerHTML = cal.operand1.slice(0, -1)
+      runningEquation.innerHTML = cal.operand1
       input.value = cal.operand1
     }
   },
