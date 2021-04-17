@@ -84,17 +84,20 @@ const cal = {
           cal.operand1 = '';
           cal.operand2 = '';
     			break;
+        case 'equals':
+          break;
 	  }
     }
     if (cal.pressedEquals) {
-      if (cal.accumulator = NaN) {
-        
+      if (isNaN(cal.accumulator)) {
+        input.value = 'ERROR';
       } else {
         input.value = cal.accumulator;
         cal.pressedEquals = false;
         runningEquation.innerText = '';
         cal.equationHistory = [];
         cal.op1HeldValue = false;
+        cal.currentOperator = 'equals';
       }
     }
 
