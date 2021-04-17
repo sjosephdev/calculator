@@ -23,7 +23,6 @@
 /*******************************************/
 html {
   font-size: 62.5%;
-  touch-action: manipulation;
 }
 
 body {
@@ -88,6 +87,7 @@ header {
   flex-direction: column;
   flex-wrap: nowrap;
   flex: 2;
+  touch-action: manipulation;
 }
 
 .calculatorInput {
@@ -110,8 +110,7 @@ header {
 .calculatorButtons {
   display: block;
   font-size: 0;
-  /* font-size: 4rem; */
-  /* margin: 2rem 0 4rem 0; */
+  touch-action: manipulation;
   width: 100%;
 }
 
