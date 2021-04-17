@@ -22,22 +22,91 @@ const cal = {
   operand1: '',
   operand2: '',
   currentOperator: '',
-  accEquation: '',
+  accumulator: 0,
+  equationHistory: [],
   op1HeldValue: false,
+  pressedEquals: false,
+  operation: '',
 
+	operators: {
+		add: function(operand1, operand2) { return parseFloat(operand1) + parseFloat(operand2) },
+		subtract: function(operand1, operand2) { return parseFloat(operand1) - parseFloat(operand2) },
+		multiply: function(operand1, operand2) { return parseFloat(operand1) * parseFloat(operand2) },
+		divide: function(operand1, operand2) { return parseFloat(operand1) / parseFloat(operand2) },
+	},
+
+	evaluate: function() {
+    event.target.classList.add('clicking');
+    if (cal.accumulator) {
+      switch (cal.currentOperator) {
+        case 'add':
+          cal.accumulator = cal.operators.add(cal.accumulator, cal.operand2)
+          cal.operand1 = '';
+          cal.operand2 = '';
+          break;
+        case 'subtract':
+          cal.accumulator = cal.operators.subtract(cal.accumulator, cal.operand2)
+          cal.operand1 = '';
+          cal.operand2 = '';
+          break;
+        case 'multiply':
+          cal.accumulator = cal.operators.multiply(cal.accumulator, cal.operand2)
+          cal.operand1 = '';
+          cal.operand2 = '';
+          break;
+        case 'divide':
+          cal.accumulator = cal.operators.divide(cal.accumulator, cal.operand2)
+          cal.operand1 = '';
+          cal.operand2 = '';
+          break;
+        case 'equals':
+          break;
+       }
+    } else {
+  		switch (cal.currentOperator) {
+    		case 'add':
+    			cal.accumulator = cal.operators.add(cal.operand1, cal.operand2)
+          cal.operand1 = '';
+          cal.operand2 = '';
+    			break;
+    		case 'subtract':
+          cal.accumulator = cal.operators.subtract(cal.operand1, cal.operand2)
+          cal.operand1 = '';
+          cal.operand2 = '';
+    			break;
+    		case 'multiply':
+    			cal.accumulator = cal.operators.multiply(cal.operand1, cal.operand2)
+          cal.operand1 = '';
+          cal.operand2 = '';
+    			break;
+    		case 'divide':
+          cal.accumulator = cal.operators.divide(cal.operand1, cal.operand2)
+          cal.operand1 = '';
+          cal.operand2 = '';
+    			break;
+	  }
+    }
+    if (cal.pressedEquals) {
+      input.value = cal.accumulator;
+      cal.pressedEquals = false;
+      runningEquation.innerText = '';
+      cal.equationHistory = [];
+      cal.op1HeldValue = false;
+    }
+
+	},
 
   // ---- METHODS ----
   clickNumber: function() {
     event.target.classList.add('clicking')
-    if (cal.op1HeldValue) {
-      cal.operand2 += event.target.value
-      input.value = cal.operand2
-      runningEquation.innerHTML += cal.operand2
-      // cal.evaluate();
+    if (cal.op1HeldValue || cal.accumulator) {
+      cal.operand2 += event.target.value;
+      input.value = cal.operand2;
+      runningEquation.innerText = `${cal.equationHistory.join('')} ${cal.operand2}`;1
     } else {
-      cal.operand1 += event.target.value
-      input.value = cal.operand1
-      runningEquation.innerHTML = cal.operand1
+      cal.operand1 += event.target.value;
+      input.value = cal.operand1;
+      runningEquation.innerText = cal.operand1;
     }
   },
 
@@ -57,11 +126,11 @@ const cal = {
     event.target.classList.add('clicking');
     if (cal.op1HeldValue) {
       cal.operand2 = cal.operand2.slice(0, -1)
-      runningEquation.innerHTML = cal.operand2
+      runningEquation.innerText = cal.operand2
       input.value = cal.operand2
     } else {
       cal.operand1 = cal.operand1.slice(0, -1)
-      runningEquation.innerHTML = cal.operand1
+      runningEquation.innerText = cal.operand1
       input.value = cal.operand1
     }
   },
@@ -72,7 +141,9 @@ const cal = {
     cal.operand2 = '';
     cal.currentOperator = '';
     cal.op1HeldValue = false;
-    runningEquation.innerHTML = '';
+    cal.accumulator = 0;
+    runningEquation.innerText = '';
+    cal.equationHistory = [];
     input.value = 0;
   },
 
@@ -82,82 +153,59 @@ const cal = {
     document.execCommand("copy");
   },
 
-  evaluate: function() {
-    event.target.classList.add('clicking');
-    if (cal.op1HeldValue && cal.operand2) {
-      Number(cal.operand2);
-      switch(cal.currentOperator) {
-        case 'add':
-          cal.operand1 = Number(cal.operand1) + Number(cal.operand2);
-          input.value = cal.operand1;
-          cal.operand2 = '';
-          break;
-        case 'subtract':
-          cal.operand1 = Number(cal.operand1) - Number(cal.operand2);
-          input.value = cal.operand1;
-          cal.operand2 = '';
-          break;
-        case 'multiply':
-          cal.operand1 = Number(cal.operand1) * Number(cal.operand2);
-          input.value = cal.operand1;
-          cal.operand2 = '';
-          break;
-        case 'divide':
-          cal.operand1 = Number(cal.operand1) / Number(cal.operand2);
-          input.value = cal.operand1;
-          cal.operand2 = '';
-          break;
-      }
-    }
-  },
-
   add: function() {
     event.target.classList.add('clicking');
-    cal.currentOperator = 'add';
-    runningEquation.innerHTML = `${runningEquation.innerHTML} + `
+    cal.equationHistory.push(`${input.value} + `)
+    runningEquation.innerText = `${cal.equationHistory.join('')}`
     if (cal.op1HeldValue) {
       cal.evaluate()
     } else {
       cal.op1HeldValue = true;
-      Number(cal.operand1);
     }
+    cal.currentOperator = 'add';
   },
 
   subtract: function() {
     event.target.classList.add('clicking');
-    cal.currentOperator = 'subtract';
-    runningEquation.innerHTML = `${runningEquation.innerHTML} - `
+    cal.equationHistory.push(`${input.value} - `)
+    runningEquation.innerText = `${cal.equationHistory.join('')}`
     if (cal.op1HeldValue) {
       cal.evaluate()
     } else {
       cal.op1HeldValue = true;
-      Number(cal.operand1);
     }
+    cal.currentOperator = 'subtract';
   },
 
   multiply: function() {
     event.target.classList.add('clicking');
-    cal.currentOperator = 'multiply';
-    runningEquation.innerHTML = `${runningEquation.innerHTML} x `
+    cal.equationHistory.push(`${input.value} * `)
+    runningEquation.innerText = `${cal.equationHistory.join('')}`
     if (cal.op1HeldValue) {
       cal.evaluate()
     } else {
       cal.op1HeldValue = true;
-      Number(cal.operand1);
     }
+    cal.currentOperator = 'multiply';
   },
 
   divide: function() {
     event.target.classList.add('clicking');
-    cal.currentOperator = 'divide';
-    runningEquation.innerHTML = `${runningEquation.innerHTML} / `
+    cal.equationHistory.push(`${input.value} / `)
+    runningEquation.innerText = `${cal.equationHistory.join('')}`
     if (cal.op1HeldValue) {
-      cal.evaluate()
+      cal.evaluate();
     } else {
       cal.op1HeldValue = true;
-      Number(cal.operand1);
     }
+    cal.currentOperator = 'divide';
   },
+
+  equalPress: function() {
+    cal.pressedEquals = true;
+    cal.evaluate();
+  },
+
 
   stopTransition: function(e) {
     if (e.propertyName !== 'transform') return;
@@ -174,7 +222,9 @@ const cal = {
     //evaluates current total when user clicks on a non-number button:
   btn.forEach(btn => btn.addEventListener('click', cal.evaluate));
     //evaluates total when user clicks on equals button:
-  btnEquals.addEventListener('click', cal.evaluate);
+  btnEquals.addEventListener('click', () => {
+    cal.equalPress();
+  });
     //clears input and stored data when user clicks on clear button:
   btnClear.addEventListener('click', cal.clickClear);
     //deletes last number
