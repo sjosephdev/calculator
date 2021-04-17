@@ -87,11 +87,15 @@ const cal = {
 	  }
     }
     if (cal.pressedEquals) {
-      input.value = cal.accumulator;
-      cal.pressedEquals = false;
-      runningEquation.innerText = '';
-      cal.equationHistory = [];
-      cal.op1HeldValue = false;
+      if (cal.accumulator = NaN) {
+        break;
+      } else {
+        input.value = cal.accumulator;
+        cal.pressedEquals = false;
+        runningEquation.innerText = '';
+        cal.equationHistory = [];
+        cal.op1HeldValue = false;
+      }
     }
 
 	},
