@@ -88,7 +88,7 @@ const cal = {
     }
     if (cal.pressedEquals) {
       if (cal.accumulator = NaN) {
-        break;
+        
       } else {
         input.value = cal.accumulator;
         cal.pressedEquals = false;
