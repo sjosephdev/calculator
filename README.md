@@ -1,9 +1,12 @@
-# Simple Calculator ## https://calculator.sjoseph.dev
 
-## Contact
-S. Joseph
+# Calculator
+![calculator300](https://user-images.githubusercontent.com/78551427/121896038-de5f4380-ccee-11eb-8daf-f382d6268ab0.png)
+
+https://calculator.sjoseph.dev
+
 sjosephwebdev@gmail.com
-sjoseph.dev
+
+[sjoseph.dev](https://sjoseph.dev)
 
 ## About
 
@@ -11,7 +14,9 @@ This is a simple JavaScript calculator, written from scratch and in a way I felt
 
 The design focus is straightforward and responsive / moble-friendly. 
 
-Languages used:
+**Languages used:**
+
 - Javascript
 - HTML
 - CSS
+
